@@ -7,11 +7,16 @@ Public website, Privacy Policy, Terms of Use and package-specific advertising co
 - Terms: https://metosapps.github.io/weather-app-galaxy/terms.html
 - Galaxy Store: https://galaxystore.samsung.com/detail/rad.galxy.weatherslive.accu.gpsweather.dailyapps.channels
 - Support: izabelastrzelczyk726@gmail.com
-- App configuration endpoint: https://raw.githubusercontent.com/metosapps/weather-app-galaxy/main/config/ads.json
+- Release configuration (1.0.9+): https://raw.githubusercontent.com/metosapps/weather-app-galaxy/main/config/ads-release.json
+- Legacy test configuration (1.0.8): https://raw.githubusercontent.com/metosapps/weather-app-galaxy/main/config/ads.json
 
 ## Advertising controls
 
-Edit `config/ads.json` on the `main` branch and **increase `revision`** for every change, including a rollback. Keep the package, store and schema identifiers unchanged.
+All advertising is currently disabled: the global switch and all four format switches are `false`. Keep them disabled until the exact update is live and the publisher explicitly authorizes activation. There is no scheduled or automatic activation.
+
+For **1.0.9+**, edit `config/ads-release.json` on `main` and **increase `revision`** for every change, including a rollback. Keep `ads.mode` equal to `production`, and keep the package, store, schema and exact unit IDs unchanged. A later activation requires both the master switch and the desired format switches. Consent, Premium and lifecycle checks still apply.
+
+Keep legacy `config/ads.json` disabled. It is a separate kill switch for the earlier 1.0.8 test APK; enabling the release config must never re-enable old test builds.
 
 | Field | Effect |
 | --- | --- |
@@ -21,12 +26,21 @@ Edit `config/ads.json` on the `main` branch and **increase `revision`** for ever
 | `ads.interstitial.enabled` | Interstitial placement switch; the existing cancellable Showing ads notice remains. |
 | `ads.appOpen.enabled` | App-open placement switch. |
 | `minIntervalSeconds` | Minimum fullscreen cadence, bounded by the app to 60–3600 seconds; initial value 120. Existing stricter eligibility rules still apply. |
-| `unitId` | Official Google demo unit for the corresponding format. The current test build rejects other IDs. |
+| `unitId` | Exact compiled production unit for this app and format. Other units and test mode are rejected by the release APK. |
 | `links` | Package-specific website, legal, support and store links. Only the app's permitted destinations are accepted. Bundled defaults remain available. |
 
-This configuration is consumed by the updated **1.0.8-samsung-testads** APK. Publishing the file does not retrofit an older installed or store APK; that version must be updated through the normal app distribution process.
+The release configuration is consumed by **1.0.9** (version code 10). It uses a new cache namespace and requires production mode, so an enabled test configuration cached by 1.0.8 cannot turn on real ads after upgrade. The default, unavailable-config and expired-cache behaviors all keep ads disabled. Ads disabled also blocks the app's explicit Mobile Ads initialization path.
 
-The current APK is deliberately limited to **Google Test Ads**. Setting a real publisher unit in this file does not enable production advertising. Production requires a reviewed app build with the exact package's verified IDs and explicit publisher approval. Do not put credentials, signing files, receipts, API secrets or personal user data in this public repository.
+The app-specific AdMob App ID is `ca-app-pub-3289974964220873~8616823829`. Compiled units are:
+
+| Format | Production unit ID |
+| --- | --- |
+| Banner | `ca-app-pub-3289974964220873/9357576220` |
+| Native | `ca-app-pub-3289974964220873/2501532997` |
+| Interstitial | `ca-app-pub-3289974964220873/3814614667` |
+| App open | `ca-app-pub-3289974964220873/8044494559` |
+
+The publisher provided these identifiers for this app. Configuration/build verification is not proof of production ad fill or AdMob policy clearance. Publishing these files does not retrofit the original app: users must receive a build which consumes remote configuration. Earlier 1.0.8 test installations also need to fetch the disabled legacy config; an offline enabled cache can remain valid for up to 24 hours. Do not put credentials, signing files, receipts, API secrets or personal data in this public repository.
 
 Remote settings cannot bypass Premium ownership, advertising-consent eligibility, lifecycle checks, the interstitial notice or the compiled cadence floor. They cannot replace SDKs, install code or change the manifest AdMob App ID. Weather-related Firebase settings remain part of the existing app; GitHub is an additional authoritative advertising kill switch, so an existing disabled placement stays disabled.
 
