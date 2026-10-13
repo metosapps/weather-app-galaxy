@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "packageName": "rad.galxy.weatherslive.accu.gpsweather.dailyapps.channels",
+  "store": "galaxy",
+  "revision": 1,
+  "ads": {
+    "enabled": false,
+    "banner": {
+      "enabled": false,
+      "unitId": "ca-app-pub-3289974964220873/9357576220"
+    },
+    "native": {
+      "enabled": false,
+      "unitId": "ca-app-pub-3289974964220873/2501532997"
+    },
+    "interstitial": {
+      "enabled": false,
+      "unitId": "ca-app-pub-3289974964220873/3814614667",
+      "minIntervalSeconds": 120
+    },
+    "appOpen": {
+      "enabled": false,
+      "unitId": "ca-app-pub-3289974964220873/8044494559",
+      "minIntervalSeconds": 120
+    },
+    "mode": "production"
+  },
+  "links": {
+    "website": "https://metosapps.github.io/weather-app-galaxy/",
+    "privacyPolicy": "https://metosapps.github.io/weather-app-galaxy/privacy.html",
+    "terms": "https://metosapps.github.io/weather-app-galaxy/terms.html",
+    "supportEmail": "izabelastrzelczyk726@gmail.com",
+    "galaxyStore": "https://galaxystore.samsung.com/detail/rad.galxy.weatherslive.accu.gpsweather.dailyapps.channels"
+  }
+}
