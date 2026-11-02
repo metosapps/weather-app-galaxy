@@ -12,7 +12,7 @@ Public website, Privacy Policy, Terms of Use and package-specific advertising co
 
 ## Advertising controls
 
-All advertising is currently disabled: the global switch and all four format switches are `false`. Keep them disabled until the exact update is live and the publisher explicitly authorizes activation. There is no scheduled or automatic activation.
+Production advertising was activated on 2026-11-02 after the publisher confirmed this exact Galaxy Store app was live. Release revision 2 enables the global switch and all four format switches. The legacy test configuration remains disabled. Any rollback must increase the release revision again.
 
 For **1.0.9+**, edit `config/ads-release.json` on `main` and **increase `revision`** for every change, including a rollback. Keep `ads.mode` equal to `production`, and keep the package, store, schema and exact unit IDs unchanged. A later activation requires both the master switch and the desired format switches. Consent, Premium and lifecycle checks still apply.
 

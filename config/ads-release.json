@@ -2,24 +2,24 @@
   "schemaVersion": 1,
   "packageName": "rad.galxy.weatherslive.accu.gpsweather.dailyapps.channels",
   "store": "galaxy",
-  "revision": 1,
+  "revision": 2,
   "ads": {
-    "enabled": false,
+    "enabled": true,
     "banner": {
-      "enabled": false,
+      "enabled": true,
       "unitId": "ca-app-pub-3289974964220873/9357576220"
     },
     "native": {
-      "enabled": false,
+      "enabled": true,
       "unitId": "ca-app-pub-3289974964220873/2501532997"
     },
     "interstitial": {
-      "enabled": false,
+      "enabled": true,
       "unitId": "ca-app-pub-3289974964220873/3814614667",
       "minIntervalSeconds": 120
     },
     "appOpen": {
-      "enabled": false,
+      "enabled": true,
       "unitId": "ca-app-pub-3289974964220873/8044494559",
       "minIntervalSeconds": 120
     },
