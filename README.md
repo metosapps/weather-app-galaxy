@@ -12,7 +12,7 @@ Public website, Privacy Policy, Terms of Use and package-specific advertising co
 
 ## Advertising controls
 
-Production advertising was activated on 2026-11-02 after the publisher confirmed this exact Galaxy Store app was live. On 2026-11-07, AdMob again reported "Encouraging accidental clicks: Layout" for this package. Release revision 3 temporarily disables Banner and Native while leaving Interstitial and App Open enabled under their existing gates. The legacy test configuration remains disabled. Any later change must increase the release revision again.
+Production advertising was activated on 2026-11-02 after the publisher confirmed this exact Galaxy Store app was live. On 2026-11-07, AdMob again reported "Encouraging accidental clicks: Layout" for this package. Release revision 3 disabled Banner and Native while leaving Interstitial and App Open enabled under their existing gates. At the publisher's request, release revision 4 sets the minimum shared fullscreen interval to 60 seconds for Interstitial and App Open. The legacy test configuration remains disabled. Any later change must increase the release revision again.
 
 The prepared 1.0.11/code 12 update also blocks Banner and Native in the APK itself, even if this remote file is accidentally re-enabled for those formats. Those two placements require a further reviewed APK to return. This is a mitigation, not AdMob policy clearance: upload the corrected version to Galaxy Store, verify it on a device, then request a review in AdMob Policy Center. AdMob's notice identifies version 1.0.2 as reviewed, so older installed versions may still generate requests.
 
@@ -27,7 +27,7 @@ Keep legacy `config/ads.json` disabled. It is a separate kill switch for the ear
 | `ads.native.enabled` | Native placement switch. |
 | `ads.interstitial.enabled` | Interstitial placement switch; the existing cancellable Showing ads notice remains. |
 | `ads.appOpen.enabled` | App-open placement switch. |
-| `minIntervalSeconds` | Minimum fullscreen cadence, bounded by the app to 60–3600 seconds; initial value 120. Existing stricter eligibility rules still apply. |
+| `minIntervalSeconds` | Minimum fullscreen cadence, bounded by the app to 60–3600 seconds; current release value 60. Existing stricter eligibility rules still apply. |
 | `unitId` | Exact compiled production unit for this app and format. Other units and test mode are rejected by the release APK. |
 | `links` | Package-specific website, legal, support and store links. Only the app's permitted destinations are accepted. Bundled defaults remain available. |
 
