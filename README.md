@@ -12,7 +12,9 @@ Public website, Privacy Policy, Terms of Use and package-specific advertising co
 
 ## Advertising controls
 
-Production advertising was activated on 2026-11-02 after the publisher confirmed this exact Galaxy Store app was live. Release revision 2 enables the global switch and all four format switches. The legacy test configuration remains disabled. Any rollback must increase the release revision again.
+Production advertising was activated on 2026-11-02 after the publisher confirmed this exact Galaxy Store app was live. On 2026-11-07, AdMob again reported "Encouraging accidental clicks: Layout" for this package. Release revision 3 temporarily disables Banner and Native while leaving Interstitial and App Open enabled under their existing gates. The legacy test configuration remains disabled. Any later change must increase the release revision again.
+
+The prepared 1.0.11/code 12 update also blocks Banner and Native in the APK itself, even if this remote file is accidentally re-enabled for those formats. Those two placements require a further reviewed APK to return. This is a mitigation, not AdMob policy clearance: upload the corrected version to Galaxy Store, verify it on a device, then request a review in AdMob Policy Center. AdMob's notice identifies version 1.0.2 as reviewed, so older installed versions may still generate requests.
 
 For **1.0.9+**, edit `config/ads-release.json` on `main` and **increase `revision`** for every change, including a rollback. Keep `ads.mode` equal to `production`, and keep the package, store, schema and exact unit IDs unchanged. A later activation requires both the master switch and the desired format switches. Consent, Premium and lifecycle checks still apply.
 
